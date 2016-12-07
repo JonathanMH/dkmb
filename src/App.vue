@@ -6,11 +6,18 @@
 
 <script>
 import Hello from './components/Hello'
+import store from './store.js';
 
 export default {
   name: 'app',
   components: {
     Hello
+  },
+  data() {
+    return store.state
+  },
+  created: function(){
+    console.log(this.movies.length)
   }
 }
 </script>
