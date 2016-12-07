@@ -1,8 +1,8 @@
 <template>
-  <div class="hello">
+  <div class="hello container">
     <h1>DFI film database</h1>
-    <div v-for="movie in movies">
-      {{ movie.title }} : {{ movie.title_dk }}
+    <div v-for="movie in shared.movies">
+      <router-link :to="'/film/' + movie.id">{{movie.id}} {{ movie.title }} : {{ movie.title_dk }}</router-link>
     </div>
   </div>
 </template>
@@ -13,11 +13,21 @@ import store from '../store.js';
 export default {
   name: 'hello',
   data() {
-    return store.state
-
+    return {
+      shared: store.state
+    }
   },
   created: function(){
-    console.log(this.movies.length)
+    var self = this;
+    if(this.shared.movies.length === 0){
+      // @TODO: add timeout to http request
+      // @TODO: wrap JSON parsing in try/catch
+      this.$http.get('/static/movies.json').then((response) => {
+        store.set('movies', response.body);
+      }, (response) => {
+        // @TODO: handle http response error
+      });
+    }
   }
 }
 </script>

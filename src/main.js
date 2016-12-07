@@ -7,29 +7,33 @@ Vue.use(VueResource);
 Vue.use(VueRouter);
 
 import App from './App';
+import Hello from './components/Hello'
+import Film from './components/Film'
 import store from './store.js';
 
-Vue.use(VueResource);
+const routes = [
+  { path: '/', component: Hello },
+  { path: '/film/:id', component: Film }
+];
+
+const router = new VueRouter({
+  routes: routes
+});
+
+router.beforeEach(function (from, to, next) {
+  window.scrollTo(0, 0)
+  next()
+})
 
 new Vue({
   el: '#app',
+  router: router,
   template: '<App/>',
   data: store.state,
   components: { App },
-  methods: {
-    getMovies: function(){
-      // GET /someUrl
-      var self = this;
-      this.$http.get('/static/movies.json').then((response) => {
-        store.set('movies',response.body);
-        //self.$root.$data.movies = response.body
-        console.log(self.movies.length)
-      }, (response) => {
-        console.log(response);
-      });
-    }
-  },
   created: function() {
-    this.getMovies();
+    if (window.innerWidth > 600){
+      this.mobile = false;
+    }
   }
 })

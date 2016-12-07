@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <hello></hello>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
+import Hello from './components/Hello';
+import Film from './components/Film';
 import store from './store.js';
 
 export default {
@@ -24,10 +25,6 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   margin-top: 60px;
 }
 </style>

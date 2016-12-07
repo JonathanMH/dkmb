@@ -1,0 +1,10 @@
+pre {
+  border: 0;
+}
+
+.poster {
+  width: 100%;
+}
+
+@media (min-width: 40.0rem) {
+}
