@@ -1,4 +1,4 @@
-# film database
+# Movie Database
 
 Projektet er baseret på dette [Vue.js webpack template](http://vuejs-templates.github.io/webpack/).
 

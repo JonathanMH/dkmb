@@ -1,10 +1,46 @@
+
+body {
+  height: 100%;
+  /* @TODO: use prefixer in build tool instead of using prefixes */
+  background: #181900; /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #181900 0%, #c1341a 100%) fixed; /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #181900 0%,#c1341a 100%) fixed; /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #181900 0%,#c1341a 100%) fixed; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+
+
+h2 {
+  font-size: 2.8rem;
+}
+
 pre {
   border: 0;
+}
+
+/* @TODO: reset color through sass when including framework */
+input[type='email']:focus, input[type='number']:focus, input[type='password']:focus, input[type='search']:focus, input[type='tel']:focus, input[type='text']:focus, input[type='url']:focus, textarea:focus, select:focus {
+  border-color: white;
+  color: white;
+}
+
+/* @TODO: reset color through sass when including framework */
+a {
+  color: white;
+}
+
+.button, .button.button-outline {
+  color: white;
+  border-color: white;
 }
 
 .poster {
   width: 100%;
 }
+
 
 @media (min-width: 40.0rem) {
 }

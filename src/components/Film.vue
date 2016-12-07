@@ -2,6 +2,9 @@
 <template>
   <transition name="fade" appear>
     <div class="container film" v-if="private.loaded">
+      <div class="movie--back_button">
+        <router-link to="/" class="button button-outline">go back</router-link>
+      </div>
       <div v-if="shared.mobile">
         <div class="row">
           <div class="column">
@@ -12,7 +15,7 @@
             <img class="poster" :src="private.posterURL">
           </div>
           <div class="column">
-            <h2>
+            <h2 class="movie--director">
               <span v-for="director in movie.credits.direction">
                 {{director.type}}: {{director.first_name.String}} {{director.last_name}}
               </span>
@@ -29,7 +32,7 @@
           <div class="column">
             <h1 v-if="movie.title != 'N/A'">{{movie.title}}</h1>
             <h1 v-if="movie.title == 'N/A'">{{movie.title_dk}}</h1>
-            <h2>
+            <h2 class="movie--director">
               <span v-for="director in movie.credits.direction">
                 {{director.type}}: {{director.first_name.String}} {{director.last_name}}
               </span>
