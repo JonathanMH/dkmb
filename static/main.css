@@ -11,18 +11,17 @@ body {
   color: white;
 }
 
-
-
 h2 {
   font-size: 2.8rem;
 }
 
 pre {
   border: 0;
+  background: black;
 }
 
 /* @TODO: reset color through sass when including framework */
-input[type='email']:focus, input[type='number']:focus, input[type='password']:focus, input[type='search']:focus, input[type='tel']:focus, input[type='text']:focus, input[type='url']:focus, textarea:focus, select:focus {
+input[type='email']:focus, input[type='number']:focus, input[type='password']:focus, input[type='search']:focus, input[type='tel']:focus, input[type='text']:focus, input[type='url']:focus, textarea:focus, select:focus, input {
   border-color: white;
   color: white;
 }
@@ -41,6 +40,12 @@ a {
   width: 100%;
 }
 
+.hello--search-result {
+  font-size: 1.6rem;
+  display: block;
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+  margin-bottom: 1rem;
+}
 
 @media (min-width: 40.0rem) {
 }

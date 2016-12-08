@@ -1,6 +1,6 @@
 
 export default {
-  debug: true,
+  debug: false, // @TODO: make this environemnt aware
   state: {
     movies: [],
     mobile: true

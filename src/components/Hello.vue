@@ -7,7 +7,11 @@
       </label>
     </div>
     <div v-for="movie in searchResults">
-      <router-link :to="'/film/' + movie.id">{{movie.id}} {{ movie.title }} : {{ movie.title_dk }}</router-link>
+      <router-link class="hello--search-result" :to="'/film/' + movie.id">
+        <span v-if="movie.title != 'N/A'">{{movie.title}}</span>
+        <span v-if="movie.title == 'N/A'">{{movie.title_dk}}</span>
+        <span> ({{movie.year}})</span>
+      </router-link>
     </div>
   </div>
 </template>
@@ -27,10 +31,8 @@ export default {
   },
   computed: {
     searchResults: function(){
-      console.log('computing results');
       var movies = store.state.movies;
       var searchString = this.private.searchString;
-      console.log(this.private.searchString);
 
       if(searchString.length == 0){
         return [];
@@ -40,6 +42,8 @@ export default {
       searchString = searchString.trim().toLowerCase();
 
       var movieResults = movies.filter(function(item){
+        // @TODO: weighted results title > description
+        // @TODO: weighted results whole word match > partial word match
         // @TODO: refactor, repetitive
         if( item.hasOwnProperty('title_dk') ){
           if(item.title_dk.toLowerCase().indexOf(searchString) !== -1){
@@ -67,7 +71,6 @@ export default {
     if(this.shared.movies.length === 0){
       // @TODO: add timeout to http request
       // @TODO: wrap JSON parsing in try/catch
-      this.$http.get('/static/movies.json').then((response) => {
       this.$http.get('static/movies.json').then((response) => {
         store.set('movies', response.body);
       }, (response) => {

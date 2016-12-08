@@ -11,8 +11,8 @@
             <h1 v-if="movie.title != 'N/A'">{{movie.title}}</h1>
             <h1 v-if="movie.title == 'N/A'">{{movie.title_dk}}</h1>
           </div>
-          <div class="column" v-if="private.posterURL">
-            <img class="poster" :src="private.posterURL">
+          <div class="column">
+            <img class="poster" v-if="private.posterURL" :src="private.posterURL">
           </div>
           <div class="column">
             <h2 class="movie--director">
@@ -27,7 +27,7 @@
       <div v-if="!shared.mobile">
         <div class="row">
           <div class="column">
-            <img class="poster" :src="private.posterURL">
+            <img class="poster" v-if="private.posterURL" :src="private.posterURL">
           </div>
           <div class="column">
             <h1 v-if="movie.title != 'N/A'">{{movie.title}}</h1>
@@ -41,7 +41,6 @@
           </div>
         </div>
       </div>
-      <pre>{{movie}}</pre>
     </div>
   </transition>
 </template>
