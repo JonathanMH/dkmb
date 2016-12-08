@@ -68,6 +68,7 @@ export default {
       // @TODO: add timeout to http request
       // @TODO: wrap JSON parsing in try/catch
       this.$http.get('/static/movies.json').then((response) => {
+      this.$http.get('static/movies.json').then((response) => {
         store.set('movies', response.body);
       }, (response) => {
         // @TODO: handle http response error

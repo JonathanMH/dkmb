@@ -73,7 +73,7 @@ export default {
   created: function(){
     var self = this;
     if(self.shared.movies.length === 0){
-      this.$http.get('/static/movies.json').then((response) => {
+      this.$http.get('static/movies.json').then((response) => {
         store.set('movies',response.body);
         self.private.loaded = true;
       }, (response) => {
@@ -100,7 +100,13 @@ export default {
     getPoster: function(movie){
       var self = this;
       this.$http.get(movie.photos).then((response) => {
-        self.private.posterURL = response.body.posters[0].url;
+        if( response.body.posters.length != 0){
+          console.log('poster found');
+          self.private.posterURL = response.body.posters[0].url;
+        } else {
+          console.log('poster not found, getting image instead');
+          self.private.posterURL = response.body.images[0].url;
+        }
         }, (response) => {
           // @TODO: handle http response error
         });
